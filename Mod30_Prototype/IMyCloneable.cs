@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace Mod30_Prototype
 {
-    internal interface IMyCloneable
+    internal interface IMyCloneable<out T> where T : class
     {
-        public Printer CloneMemberWise();
+        public T CloneMemberWise();
 
-        public Printer CloneCtor();
+        public T CloneCtor();
     }
 }

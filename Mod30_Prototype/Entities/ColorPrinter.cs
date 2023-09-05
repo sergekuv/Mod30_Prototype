@@ -16,11 +16,13 @@ internal class ColorPrinter : Printer
 
     public override ColorPrinter CloneMemberWise()
     {
-        return this.MemberwiseClone() as ColorPrinter;
+        ColorPrinter result = base.CloneMemberWise() as ColorPrinter;
+        result.ColorCount = this.ColorCount; 
+        return result;
     }
 
     public override ColorPrinter CloneCtor()
     {
-        return new ColorPrinter(model: Model, serialNumber: SerialNumber, colorCount: ColorCount);
+        return new ColorPrinter(model:this.Model, serialNumber:this.SerialNumber, colorCount:this.ColorCount);
     }
 }

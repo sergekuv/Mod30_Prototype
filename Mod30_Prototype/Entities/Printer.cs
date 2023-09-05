@@ -1,6 +1,6 @@
 ﻿namespace Mod30_Prototype.Entities;
 
-internal class Printer : IMyCloneable, ICloneable
+internal class Printer : IMyCloneable<Printer>, ICloneable
 {
     public string Model { get; set; }
     public string SerialNumber { get; set; }
@@ -18,7 +18,7 @@ internal class Printer : IMyCloneable, ICloneable
     }
     public virtual Printer CloneCtor()
     {
-        return new Printer(model: Model, serialNumber: SerialNumber, bwCount: BwCount) as Printer;
+        return new Printer(model: Model, serialNumber: SerialNumber, bwCount: BwCount);
     }
 
     public object Clone() => CloneCtor();

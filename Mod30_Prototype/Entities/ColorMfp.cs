@@ -18,7 +18,11 @@ internal class ColorMfp : ColorPrinter
 
     public override ColorMfp CloneMemberWise()
     {
-        return this.MemberwiseClone() as ColorMfp;
+        ColorMfp result = base.CloneMemberWise() as ColorMfp;
+        result.ScanCount = this.ScanCount;
+        result.FaxUnit = this.FaxUnit.Clone() as FaxModule;
+        return result ;
+
     }
 
     public ColorMfp CloneWithNewFax()
@@ -29,7 +33,7 @@ internal class ColorMfp : ColorPrinter
     }
     public override ColorMfp CloneCtor()
     {
-        return new ColorMfp(model: Model, serialNumber: SerialNumber, scanCount: ScanCount, faxUnit: FaxUnit);
+        return new ColorMfp(model: this.Model, serialNumber: this.SerialNumber, faxUnit: this.FaxUnit.Clone(), scanCount:this.ScanCount);
     }
 
 }
